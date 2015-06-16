@@ -46,3 +46,5 @@ end
 	
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
+gem 'carrierwave'
+
