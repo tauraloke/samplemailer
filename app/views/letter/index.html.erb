@@ -1,0 +1,9 @@
+<%= simple_form_for(@letter, url:'/') do |f| %>
+  <h1>Send me a letter ☘ </h1>
+  <%= f.text_field 'name', placeholder: 'Title' %>
+  <%= f.email_field 'email', placeholder: 'Vanya@Doe.name' %>
+  <%= f.text_area 'message', placeholder: 'Tell me more... ☠ ' %><%=f.error 'message' %>
+  <br />
+  <%= f.file_field 'image' %><%= f.error 'image' %>
+  <%= submit_tag 'Send' %>
+<% end %>

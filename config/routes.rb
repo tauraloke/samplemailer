@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+  root 'letter#index'
+
+  post '/', to: 'letter#create'
+  get '/success', to: 'letter#success', as: :success
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
