@@ -9,6 +9,7 @@ class LetterController < ApplicationController
     if @letter.errors.any?
       render :index
     else
+      LetterMailer.notify_email(@letter).deliver_now
       redirect_to action: :success
       return false
     end
