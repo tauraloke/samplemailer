@@ -14,30 +14,41 @@
  *= require_self
  */
 
-#new_letter {
+.letter_form {
   margin: 10% 20%;
+  text-align: center;
   h1 {
     text-align: center;
   }
-  input, textarea {
+  input {
     margin: 5px;
-    width: 100%;
+  }
+  .g-recaptcha {
+    margin-left: 33%;
+    margin-top: 5px;
   }
   .error_message {
     border: red;
   }
-  input[type=file] {
-    width: inherit;
+  .recaptcha {
+    margin-left: 50%;
+    margin-right: 50%;
   }
+  input[type=file] {
+  }
+   
   input[type=submit] {
-    float:right;
+    display: block;
     width: 7em;
+    margin-left: 50%;
+    margin-right: 50%;
   }
 }
 
 span.error {
   color: red;
   margin-left: 3em;
+  display: block;
 }
 
 div.success {

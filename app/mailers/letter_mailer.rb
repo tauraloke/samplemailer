@@ -9,4 +9,10 @@ class LetterMailer < ApplicationMailer
     mail(to: Rails.application.config.admin_email, subject: letter.name)
   end
 
+  def reply_to(letter, message)
+    @letter = letter
+    @message = message
+    mail(to: letter.email, subject: 'Reply to: '+letter.name)
+  end
+
 end

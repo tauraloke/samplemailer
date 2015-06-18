@@ -1,17 +1,30 @@
 ActiveAdmin.register Letter do
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if resource.something?
-#   permitted
-# end
+  show do
+    attributes_table do
+      row :name
+      row :id
+      row :email
+      row :message
+      row :also do |letter|
+        link_to 'Reply to letter',  reply_admin_letter_path 
+      end
+      row :image do |letter|
+        image_tag letter.image.url  unless letter.image.url.nil?
+      end
+    end
+  end
 
+  member_action :reply, method: :get do
+    @letter = Letter.find params[:id]
+  end
+
+  member_action :send_email, method: :post do
+    letter = Letter.find params[:id]
+    LetterMailer.reply_to(letter, params[:message]).deliver_now
+    redirect_to admin_letter_path, notice: 'Done.'
+    false
+
+  end
 
 end
